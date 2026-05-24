@@ -1,0 +1,559 @@
+:root {
+    --bg: #FCF9F2; /* Warm Cream */
+    --primary: #1A1A1A; /* Deep Charcoal */
+    --accent: #B8860B; /* Dark Goldenrod/Gold */
+    --text: #1A1A1A;
+    --text-dim: #555555;
+    --glass: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+}
+
+/* Subtle Grain Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+    opacity: 0.15;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Language Logic */
+.lang-en .ta { display: none !important; }
+.lang-ta .en { display: none !important; }
+.lang-ta { font-family: 'Hind Madurai', sans-serif; }
+
+/* Background Blobs - Softer */
+.bg-gradient-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: #F3EFE0;
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(80px);
+    z-index: -1;
+    animation: move 30s infinite alternate ease-in-out;
+}
+
+.blob-1 { top: -10%; left: -10%; }
+.blob-2 { bottom: -10%; right: -10%; animation-delay: -5s; }
+
+@keyframes move {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(60px, 40px) scale(1.1); }
+}
+
+/* Navbar - Glassmorphism */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 8%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(252, 249, 242, 0.5); /* Reduced transparency */
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--text);
+    text-transform: uppercase;
+}
+
+.logo span { color: var(--accent); font-weight: 300; }
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.btn-nav {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.btn-nav:hover { color: var(--accent); transform: translateY(-1px); }
+
+.lang-switch {
+    background: rgba(0,0,0,0.03);
+    padding: 3px;
+    border-radius: 100px;
+    display: flex;
+}
+
+.lang-switch button {
+    background: none;
+    border: none;
+    color: #888;
+    padding: 6px 0;
+    width: 50px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.65rem;
+    transition: 0.4s;
+}
+
+.lang-switch button.active {
+    background: #FFF;
+    color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Tamil Typography Adjustment */
+.lang-ta { 
+    font-family: 'Hind Madurai', sans-serif; 
+    line-height: 1.8;
+}
+
+.lang-ta .hero h1 {
+    font-size: 4rem; /* Slightly smaller for Tamil as glyphs are larger */
+}
+
+.lang-ta .hero p {
+    font-size: 1.1rem;
+}
+.hero {
+    min-height: 100vh;
+    padding: 160px 8% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6rem;
+}
+
+.hero-content {
+    flex: 1.2;
+}
+
+.hero-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-tagline {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 2.5rem;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--text-dim);
+    display: block;
+    font-weight: 300;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    max-width: 520px;
+    margin-bottom: 4rem;
+    line-height: 1.8;
+}
+
+.price-container {
+    margin-bottom: 2rem;
+}
+
+.price-val {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.price-unit {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #AAA;
+    text-transform: uppercase;
+}
+
+.cta-btns {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.btn-primary-glow {
+    background: var(--primary);
+    color: #FFF;
+    padding: 1.4rem 3.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    display: inline-block;
+    border: 1px solid var(--primary);
+}
+
+.btn-primary-glow:hover {
+    background: transparent;
+    color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Visual Side */
+.floating-container {
+    position: relative;
+    width: 100%;
+}
+
+.main-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.stat-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    white-space: nowrap;
+}
+
+.card-1 { top: -30px; left: -50px; }
+.card-2 { bottom: 30px; right: -50px; }
+
+.stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent); display: block; }
+.stat-desc { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+
+/* Story Section */
+.story-section {
+    padding: 12rem 8%;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.story-section h2 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.story-content {
+    font-size: 1.4rem;
+    color: var(--text-dim);
+    line-height: 2;
+}
+
+/* Features */
+.feature-suite {
+    padding: 10rem 8%;
+    background: #F8F6F0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.f-card {
+    background: var(--bg);
+    padding: 4rem 3rem;
+    border-radius: 24px;
+    text-align: center;
+    transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.f-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+}
+
+.f-icon {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    display: block;
+}
+
+.f-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.f-card p {
+    color: var(--text-dim);
+    font-size: 1rem;
+}
+
+/* Process Section */
+.process-section {
+    padding: 12rem 8%;
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 8rem;
+}
+
+.process-header h2 { font-size: 3.5rem; margin-bottom: 1rem; }
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.process-card {
+    text-align: center;
+    position: relative;
+}
+
+.process-num {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: block;
+    letter-spacing: 4px;
+}
+
+.process-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+/* Comparison */
+.comparison-section {
+    padding: 12rem 8%;
+    background: #F3F1EA;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.comparison-card h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 2.5rem; }
+
+.table-box {
+    background: var(--bg);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #EEE;
+}
+
+.table-row:last-child { border-bottom: none; }
+.label { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.value.highlight { color: var(--accent); font-weight: 700; }
+
+/* Testimonials */
+.testimonials-section {
+    padding: 12rem 8%;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.t-card {
+    padding: 4rem;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    transition: 0.4s;
+}
+
+.t-card:hover { background: #FFF; box-shadow: var(--shadow); }
+
+.t-quote { font-size: 1.4rem; font-style: italic; margin-bottom: 3rem; line-height: 1.6; }
+.t-author { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+
+/* Order Section */
+.order-section {
+    padding: 15rem 8%;
+    text-align: center;
+    background: var(--primary);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.order-section h2 { font-size: 4.5rem; margin-bottom: 2.5rem; letter-spacing: -2px; }
+
+.btn-whatsapp {
+    background: var(--bg);
+    color: var(--primary);
+    padding: 1.8rem 5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.btn-whatsapp:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(255,255,255,0.2); }
+
+/* Store Box */
+.cta-luxury {
+    padding: 12rem 8%;
+    text-align: center;
+}
+
+.glass-box {
+    background: #FFF;
+    border-radius: 40px;
+    padding: 8rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn-luxe {
+    border: 2px solid var(--primary);
+    padding: 1.4rem 4rem;
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.btn-luxe:hover { background: var(--primary); color: #FFF; }
+
+.cta-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Footer */
+.footer-futuristic {
+    padding: 6rem 8%;
+    text-align: center;
+    border-top: 1px solid #EEE;
+    background: #FBF9F4;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .hero { flex-direction: column-reverse; text-align: center; padding-top: 140px; gap: 4rem; } /* Image First on Mobile */
+    .hero h1 { font-size: 4rem; }
+    .hero p { margin: 0 auto 3rem; }
+    .cta-btns { justify-content: center; }
+    .hero-visual .floating-container { width: 80%; margin: 0 auto; }
+    .stat-card { display: none; }
+    .comparison-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 1.2rem 5%; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 3rem; }
+    .story-section h2, .process-header h2, .comparison-card h2, .order-section h2 { font-size: 2.2rem; }
+    .feature-grid, .process-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .cta-btns { flex-direction: column; }
+    .btn-primary-glow, .btn-whatsapp { width: 100%; text-align: center; }
+    .cta-actions { flex-direction: column; }
+
+    /* Reduce excessive vertical gaps on mobile */
+    .story-section, .feature-suite, .process-section, .comparison-section, .testimonials-section, .order-section, .cta-luxury {
+        padding: 3rem 5% !important;
+    }
+    .process-header { margin-bottom: 3rem; }
+    .hero { padding-bottom: 3rem; min-height: auto; }
+    .hero h1 { margin-bottom: 1.5rem; }
+    .hero p { margin-bottom: 2rem; }
+}
