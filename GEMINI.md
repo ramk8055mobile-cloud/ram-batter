@@ -9,6 +9,7 @@
 | 1.3     | 2026-05-05 | Final Refinements | Removed WhatsApp, implemented dynamic footer year, and fixed syntax artifacts. |
 | 1.4     | 2026-05-24 | Bug Fixes | Fixed image path (.jpeg to .jpg), added missing updateYear(), and stabilized language switch layout. |
 | 1.5     | 2026-05-24 | Layout Refinement | Reduced language switch width and fixed navbar alignment issue. |
+| 1.6     | 2026-06-07 | Web Analytics | Implemented Vercel Web Analytics by adding the analytics script to index.html. |
 
 ## Development Guidelines
 - Maintain bilingual (EN/TA) support for all content.
